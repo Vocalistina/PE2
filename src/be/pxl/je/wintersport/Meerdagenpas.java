@@ -37,8 +37,8 @@ public class Meerdagenpas extends Skipas {
 
     @Override
     public String toString() {
-        LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
-        LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(this.aantalDagen), LocalTime.MAX);
+        String geldigVanaf = LocalDate.from(datum).format(DATE_FORMATTER);
+        String geldigTot = LocalDate.from(datum).plusDays(aantalDagen).format(DATE_FORMATTER) ;
         return String.format("%s\nGeldig van: %s tot en met: %s",super.toString(),
                 geldigVanaf, geldigTot);
     }
