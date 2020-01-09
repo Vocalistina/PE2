@@ -39,7 +39,7 @@ public class Dagpas extends Skipas {
 
     @Override
     public String toString() {
-        return String.format("Geldig op: %s vanaf: %s",geldigVanaf.format(DATE_FORMATTER), geldigVanaf.format(TIME_FORMATTER));
+        return String.format("%S\nGeldig op: %s vanaf: %s",skigebied.toString(),geldigVanaf.format(DATE_FORMATTER), geldigVanaf.format(TIME_FORMATTER));
     }
 
 }

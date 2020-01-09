@@ -9,13 +9,14 @@ public class Meerdagenpas extends Skipas {
     private int aantalDagen;
     private LocalDate datum;
 
-    public Meerdagenpas(Skigebied skigebied, LocalDate dateTime, int aantalPersonen, boolean kind) {
+    public Meerdagenpas(Skigebied skigebied, LocalDate dateTime, int aantalDagen, boolean kind) {
         super(skigebied, kind);
     }
 
     @Override
     public boolean isGeldig(LocalDateTime datum) {
-        LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIDNIGHT);
+        LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
+        LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(aantalDagen), LocalTime.MAX);
         return false;
     }
 

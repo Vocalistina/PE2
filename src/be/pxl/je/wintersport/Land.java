@@ -15,6 +15,6 @@ public enum Land {
     }
 
     public String getLandcode() {
-        return landcode;
+        return this.landcode;
     }
 }

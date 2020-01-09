@@ -22,7 +22,6 @@ public abstract class Skipas {
 
     //GETTERS
     public boolean isKind() {
-        /*hier komt de bepaling kind of niet */
         return kind;
     }
 
