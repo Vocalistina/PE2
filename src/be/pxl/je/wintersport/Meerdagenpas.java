@@ -20,9 +20,10 @@ public class Meerdagenpas extends Skipas {
         if (this.aantalDagen < 1) {
             this.aantalDagen = 2;
         }
-        LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
-        LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(this.aantalDagen), LocalTime.MAX);
-
+        LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.from(datum).MIDNIGHT);
+        if (geldigVanaf.isAfter(LocalDateTime.now())) {
+            return true;
+        }
         return false;
     }
 
