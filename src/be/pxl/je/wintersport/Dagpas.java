@@ -12,7 +12,7 @@ public class Dagpas extends Skipas {
     private LocalDateTime geldigVanaf;
     public Dagpas(Skigebied skigebied, LocalDateTime dateTime, boolean kind) {
         super(skigebied, kind);
-        geldigVanaf = dateTime;
+        this.geldigVanaf = dateTime;
     }
 
 

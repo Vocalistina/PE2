@@ -17,7 +17,7 @@ public abstract class Skipas {
         this.kind = kind;
     }
     //METHODS
-    public abstract boolean  isGeldig(LocalDateTime datum);
+    public abstract boolean isGeldig(LocalDateTime datum);
     public abstract double getPrijs();
 
     //GETTERS

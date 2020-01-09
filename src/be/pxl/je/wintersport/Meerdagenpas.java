@@ -16,7 +16,7 @@ public class Meerdagenpas extends Skipas {
     @Override
     public boolean isGeldig(LocalDateTime datum) {
         LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
-        LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(aantalDagen), LocalTime.MAX);
+        LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(this.aantalDagen), LocalTime.MAX);
         return false;
     }
 

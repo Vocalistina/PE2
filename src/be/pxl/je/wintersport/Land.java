@@ -7,7 +7,8 @@ public enum Land {
     private String landcode;
 
     private Land(double basisprijs, String landcode) {
-
+        this.basisprijs = basisprijs;
+        this.landcode = landcode;
     };
 
     public double getBasisprijs() {

@@ -13,7 +13,7 @@ public class Skigebied {
 
     @Override
     public String toString() {
-       return getNaam() + "[" + land.getLandcode() + "]";
+       return getNaam() + " [" + this.land.getLandcode() + "]";
     }
 
     @Override
@@ -21,20 +21,20 @@ public class Skigebied {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Skigebied skigebied = (Skigebied) o;
-        return Objects.equals(land, skigebied.land) &&
-                Objects.equals(naam, skigebied.naam);
+        return Objects.equals(this.land, skigebied.land) &&
+                Objects.equals(this.naam, skigebied.naam);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(land, naam);
+        return Objects.hash(this.land, this.naam);
     }
 
     public Land getLand() {
-        return land;
+        return this.land;
     }
 
     public String getNaam() {
-        return naam;
+        return this.naam;
     }
 }
