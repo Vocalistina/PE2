@@ -3,7 +3,7 @@ package be.pxl.je.wintersport;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Skipas {
+public abstract class Skipas {
     //EIGENSCHAPPEN
     Skigebied skigebied;
     private boolean kind;
@@ -17,6 +17,8 @@ public class Skipas {
         this.kind = kind;
     }
     //METHODS
+    public abstract boolean  isgeldig(LocalDateTime datum);
+    public abstract double getPrijs();
 
     //GETTERS
     public boolean isKind() {
@@ -36,6 +38,6 @@ public class Skipas {
         } else {
             persoon = "VOLWASSENE";
         }
-        return getSkigebied() + "\n" + persoon + " " + "prijsopzoeken\n" + "Geldig op: " + "datumopzoeken" + "vanaf" + "tijdopzoeken";
+        return getSkigebied().toString() + "\n" + persoon + " " + "prijsopzoeken\n" + "Geldig op: " + "datumopzoeken" + "vanaf" + "tijdopzoeken";
     }
 }

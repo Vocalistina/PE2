@@ -13,7 +13,7 @@ public class Skigebied {
 
     @Override
     public String toString() {
-        return getNaam() + "[" + land.getLandcode() + "]";
+       return getNaam() + "[" + land.getLandcode() + "]";
     }
 
     @Override

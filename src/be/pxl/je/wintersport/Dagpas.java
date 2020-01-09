@@ -14,14 +14,17 @@ public class Dagpas extends Skipas {
 
     }
 
-    private boolean isGeldig(LocalDateTime geldigVanaf){
-        if ((geldigVanaf.isAfter(LocalDateTime.now())) && (geldigVanaf.isBefore(LocalDateTime.now()))) {
+
+    @Override
+    public boolean isgeldig(LocalDateTime datum) {
+        if ((datum.isAfter(LocalDateTime.now())) && (datum.isBefore(LocalDateTime.MAX))) {
             return true;
         }
         return false;
     }
 
-    private double getPrijs() {
+    @Override
+    public double getPrijs() {
         double prijs = getSkigebied().getLand().getBasisprijs();
         LocalDateTime middag = LocalDateTime.of(LocalDate.now(), LocalTime.NOON);
         if (LocalDateTime.now().isAfter(middag)) {
@@ -31,8 +34,10 @@ public class Dagpas extends Skipas {
             prijs /= 1.20;
         }
         return prijs;
+    }
+
+
 
     }
 
 
-}
