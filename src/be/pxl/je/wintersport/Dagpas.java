@@ -17,8 +17,8 @@ public class Dagpas extends Skipas {
 
 
     @Override
-    public boolean isGeldig(LocalDateTime datum) {
-        if ((datum.isAfter(LocalDateTime.now())) && (datum.isBefore(LocalDateTime.MAX))) {
+    public boolean isGeldig(LocalDateTime dateTime) {
+        if ((dateTime.isAfter(LocalDateTime.now())) && (dateTime.isBefore(LocalDateTime.MAX))) {
             return true;
         }
         return false;
@@ -39,7 +39,7 @@ public class Dagpas extends Skipas {
 
     @Override
     public String toString() {
-        return String.format("%S\nGeldig op: %s vanaf: %s",skigebied.toString(),geldigVanaf.format(DATE_FORMATTER), geldigVanaf.format(TIME_FORMATTER));
+        return String.format("%S\nGeldig op: %s vanaf: %s",super.toString(),geldigVanaf.format(DATE_FORMATTER), geldigVanaf.format(TIME_FORMATTER));
     }
 
 }

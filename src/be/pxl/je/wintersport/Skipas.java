@@ -37,6 +37,6 @@ public abstract class Skipas {
         } else {
             volOfKind = "VOLWASSENE";
         }
-        return String.format("%s\n%s €%f2\n", getSkigebied(),volOfKind,getPrijs());
+        return String.format("%s\n%s €%.2f", getSkigebied(),volOfKind,getPrijs());
     }
 }
