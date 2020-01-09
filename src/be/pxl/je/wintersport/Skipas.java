@@ -8,8 +8,8 @@ public abstract class Skipas {
     Skigebied skigebied;
     private boolean kind;
 
-    DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+    public DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
     //CONSTRUCTOR
     public Skipas(Skigebied skigebied, boolean kind) {
@@ -33,13 +33,11 @@ public abstract class Skipas {
     @Override
     public String toString() {
         String volOfKind;
-        DATE_FORMATTER.datum
         if(isKind()) {
             volOfKind = "KIND";
         } else {
             volOfKind = "VOLWASSENE";
         }
-        String.format("%s\n%s €%f2\nGeldig op: %s ", getSkigebied(),volOfKind,getPrijs(),);
-        return ;
+        return String.format("%s\n%s €%f2\n", getSkigebied(),volOfKind,getPrijs());
     }
 }

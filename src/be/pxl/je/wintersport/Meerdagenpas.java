@@ -19,4 +19,9 @@ public class Meerdagenpas extends Skipas {
     public double getPrijs() {
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "Meerdagenpas{}";
+    }
 }

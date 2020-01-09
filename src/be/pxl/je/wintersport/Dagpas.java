@@ -8,10 +8,11 @@ import java.time.LocalTime;
 
 public class Dagpas extends Skipas {
 
-
+    private double KORTING_NAMIDDAG = 15.0;
+    private LocalDateTime geldigVanaf;
     public Dagpas(Skigebied skigebied, LocalDateTime dateTime, boolean kind) {
         super(skigebied, kind);
-
+        geldigVanaf = dateTime;
     }
 
 
@@ -28,7 +29,7 @@ public class Dagpas extends Skipas {
         double prijs = getSkigebied().getLand().getBasisprijs();
         LocalDateTime middag = LocalDateTime.of(LocalDate.now(), LocalTime.NOON);
         if (LocalDateTime.now().isAfter(middag)) {
-            prijs -= 15;
+            prijs -= KORTING_NAMIDDAG;
         }
         if (isKind()) {
             prijs /= 1.20;
@@ -36,6 +37,10 @@ public class Dagpas extends Skipas {
         return prijs;
     }
 
+    @Override
+    public String toString() {
+        return String.format("Geldig op: %s vanaf: %s",geldigVanaf.format(DATE_FORMATTER), geldigVanaf.format(TIME_FORMATTER));
+    }
 
 }
 
