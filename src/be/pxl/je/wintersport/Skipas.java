@@ -32,12 +32,14 @@ public abstract class Skipas {
 
     @Override
     public String toString() {
-        String persoon;
-        if (isKind()) {
-            persoon = "KIND";
+        String volOfKind;
+        DATE_FORMATTER.datum
+        if(isKind()) {
+            volOfKind = "KIND";
         } else {
-            persoon = "VOLWASSENE";
+            volOfKind = "VOLWASSENE";
         }
-        return getSkigebied().toString() + "\n" + persoon + " " + "prijsopzoeken\n" + "Geldig op: " + "datumopzoeken" + "vanaf" + "tijdopzoeken";
+        String.format("%s\n%s €%f2\nGeldig op: %s ", getSkigebied(),volOfKind,getPrijs(),);
+        return ;
     }
 }

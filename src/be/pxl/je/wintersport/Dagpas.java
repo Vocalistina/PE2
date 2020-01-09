@@ -37,7 +37,6 @@ public class Dagpas extends Skipas {
     }
 
 
-
-    }
+}
 
 
