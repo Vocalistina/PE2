@@ -1,6 +1,7 @@
 package be.pxl.je.wintersport;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -18,13 +19,13 @@ public class Dagpas extends Skipas {
             return true;
         }
         return false;
-    };
+    }
 
     private double getPrijs() {
         double prijs = getSkigebied().getLand().getBasisprijs();
-        LocalTime middag = LocalTime.NOON;
+        LocalDateTime middag = LocalDateTime.of(LocalDate.now(), LocalTime.NOON);
         if (LocalDateTime.now().isAfter(middag)) {
-
+            prijs -= 15;
         }
         if (isKind()) {
             prijs /= 1.20;
