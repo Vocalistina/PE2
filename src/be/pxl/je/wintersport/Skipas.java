@@ -8,8 +8,8 @@ public abstract class Skipas {
     Skigebied skigebied;
     private boolean kind;
 
-    public DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    public DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+    final public DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    final public DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
     //CONSTRUCTOR
     public Skipas(Skigebied skigebied, boolean kind) {
@@ -17,7 +17,7 @@ public abstract class Skipas {
         this.kind = kind;
     }
     //METHODS
-    public abstract boolean  isgeldig(LocalDateTime datum);
+    public abstract boolean  isGeldig(LocalDateTime datum);
     public abstract double getPrijs();
 
     //GETTERS

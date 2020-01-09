@@ -8,7 +8,7 @@ import java.time.LocalTime;
 
 public class Dagpas extends Skipas {
 
-    private double KORTING_NAMIDDAG = 15.0;
+    final private double  KORTING_NAMIDDAG = 15.0;
     private LocalDateTime geldigVanaf;
     public Dagpas(Skigebied skigebied, LocalDateTime dateTime, boolean kind) {
         super(skigebied, kind);
@@ -17,7 +17,7 @@ public class Dagpas extends Skipas {
 
 
     @Override
-    public boolean isgeldig(LocalDateTime datum) {
+    public boolean isGeldig(LocalDateTime datum) {
         if ((datum.isAfter(LocalDateTime.now())) && (datum.isBefore(LocalDateTime.MAX))) {
             return true;
         }
@@ -32,7 +32,7 @@ public class Dagpas extends Skipas {
             prijs -= KORTING_NAMIDDAG;
         }
         if (isKind()) {
-            prijs /= 1.20;
+            prijs *= 0.8;
         }
         return prijs;
     }
