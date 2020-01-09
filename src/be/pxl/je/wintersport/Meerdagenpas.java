@@ -13,14 +13,14 @@ public class Meerdagenpas extends Skipas {
         super(skigebied, kind);
         this.datum = datum;
         this.aantalDagen = aantalDagen;
+        if (this.aantalDagen < 1) {
+            this.aantalDagen = 2;
+        }
     }
 
     @Override
     public boolean isGeldig(LocalDateTime datum) {
-        if (this.aantalDagen < 1) {
-            this.aantalDagen = 2;
-        }
-        LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.from(datum).MIDNIGHT);
+        LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
         if (geldigVanaf.isAfter(LocalDateTime.now())) {
             return true;
         }

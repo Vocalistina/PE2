@@ -3,8 +3,8 @@ package be.pxl.je.wintersport;
 import java.time.LocalDateTime;
 
 public class Gondelbaan {
-    String naam;
-    Skigebied skigebied;
+    private String naam;
+    private Skigebied skigebied;
 
     //CONSTRUCTOR
     public Gondelbaan(String naam, Skigebied skigebied) {
@@ -14,6 +14,12 @@ public class Gondelbaan {
 
     //METHODES
     public boolean controleerToegang(Skipas skipas, LocalDateTime datumTijd) {
-        return true;
+        if (skipas.isGeldig(datumTijd) && skipas.getSkigebied().equals(this.skigebied)){
+            return true;
+
+        } else {
+            System.out.println("De skipas is niet geldig voor skigebied " + this.skigebied.toString());
+        }
+        return false;
     }
 }
