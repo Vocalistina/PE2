@@ -15,19 +15,31 @@ public class Meerdagenpas extends Skipas {
 
     @Override
     public boolean isGeldig(LocalDateTime datum) {
+        if (this.aantalDagen < 1) {
+            this.aantalDagen = 2;
+        }
         LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
         LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(this.aantalDagen), LocalTime.MAX);
+
         return false;
     }
 
 
     @Override
     public double getPrijs() {
-        return 0;
+        double prijs = getSkigebied().getLand().getBasisprijs();
+        prijs *= this.aantalDagen;
+        if (isKind()){
+            prijs *= 0.75;
+        }
+        return prijs;
     }
 
     @Override
     public String toString() {
-        return "Meerdagenpas{}";
+        LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
+        LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(this.aantalDagen), LocalTime.MAX);
+        return String.format("%s\nGeldig van: %s tot en met: %s",super.toString(),
+                geldigVanaf, geldigTot);
     }
 }
