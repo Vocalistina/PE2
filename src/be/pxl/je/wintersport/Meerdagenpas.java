@@ -24,12 +24,10 @@ public class Meerdagenpas extends Skipas {
     public boolean isGeldig(LocalDateTime datumGegeven) {
         LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
         LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(aantalDagen), LocalTime.MAX);
-        int dagenTussenGegevenEnGeldigTot = datumGegeven.toLocalDate().until(geldigTot.toLocalDate()).getDays();
+        int dagenTussenGegevenEnGeldigTot = datum.until(geldigTot.toLocalDate()).getDays();
         if (datumGegeven.toLocalDate().isEqual(geldigVanaf.toLocalDate()) ||
-                (datumGegeven.isAfter(geldigVanaf) && datumGegeven.isBefore(geldigTot))) {
+                (datumGegeven.isAfter(geldigVanaf) && datumGegeven.isBefore(geldigTot)) && dagenTussenGegevenEnGeldigTot < 3) {
             return true;
-        } else if (dagenTussenGegevenEnGeldigTot >= 3) {
-            return false;
         }
         return false;
     }
