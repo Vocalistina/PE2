@@ -10,6 +10,7 @@ public class Dagpas extends Skipas {
 
     final private double  KORTING_NAMIDDAG = 15.0;
     private LocalDateTime geldigVanaf;
+
     public Dagpas(Skigebied skigebied, LocalDateTime dateTime, boolean kind) {
         super(skigebied, kind);
         this.geldigVanaf = dateTime;
@@ -17,8 +18,8 @@ public class Dagpas extends Skipas {
 
 
     @Override
-    public boolean isGeldig(LocalDateTime dateTime) {
-        if ((dateTime.isAfter(LocalDateTime.now())) && (dateTime.isBefore(LocalDateTime.MAX))) {
+    public boolean isGeldig(LocalDateTime datum) {
+        if ( (datum.isEqual(this.geldigVanaf))  || (LocalTime.from(datum).isAfter(this.geldigVanaf.toLocalTime()) && datum.isBefore(geldigVanaf.MAX))){
             return true;
         }
         return false;

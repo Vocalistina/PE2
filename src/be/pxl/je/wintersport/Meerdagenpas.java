@@ -3,6 +3,8 @@ package be.pxl.je.wintersport;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Period;
+import java.time.chrono.ChronoLocalDateTime;
 
 public class Meerdagenpas extends Skipas {
 
@@ -19,10 +21,15 @@ public class Meerdagenpas extends Skipas {
     }
 
     @Override
-    public boolean isGeldig(LocalDateTime datum) {
+    public boolean isGeldig(LocalDateTime datumGegeven) {
         LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
-        if (geldigVanaf.isAfter(LocalDateTime.now())) {
+        LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(aantalDagen), LocalTime.MAX);
+        int dagenTussenGegevenEnGeldigTot = datumGegeven.toLocalDate().until(geldigTot.toLocalDate()).getDays();
+        if (datumGegeven.toLocalDate().isEqual(geldigVanaf.toLocalDate()) ||
+                (datumGegeven.isAfter(geldigVanaf) && datumGegeven.isBefore(geldigTot))) {
             return true;
+        } else if (dagenTussenGegevenEnGeldigTot >= 3) {
+            return false;
         }
         return false;
     }
