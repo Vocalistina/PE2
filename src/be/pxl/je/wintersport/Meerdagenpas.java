@@ -25,10 +25,10 @@ public class Meerdagenpas extends Skipas {
     @Override
     public boolean isGeldig(LocalDateTime datumGegeven) {
         LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
-        LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(aantalDagen), LocalTime.MAX);
+        LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays((aantalDagen)), LocalTime.MIN);
         int dagenTussenGegevenEnGeldigTot = datumGegeven.toLocalDate().until(geldigTot.toLocalDate()).getDays();
-        if ((datumGegeven.toLocalDate().isEqual(geldigVanaf.toLocalDate()) && dagenTussenGegevenEnGeldigTot >= 1)||
-                (datumGegeven.isAfter(geldigVanaf) && datumGegeven.isBefore(geldigTot)) && dagenTussenGegevenEnGeldigTot >= 1) {
+        if ((datumGegeven.toLocalDate().isEqual(geldigVanaf.toLocalDate()) || datumGegeven.isAfter(geldigVanaf))
+              && dagenTussenGegevenEnGeldigTot >= 1) {
             return true;
         }
         return false;
@@ -48,7 +48,7 @@ public class Meerdagenpas extends Skipas {
     @Override
     public String toString() {
         String geldigVanaf = LocalDate.from(datum).format(DATE_FORMATTER);
-        String geldigTot = LocalDate.from(datum).plusDays(aantalDagen).format(DATE_FORMATTER);
+        String geldigTot = LocalDate.from(datum).plusDays(this.aantalDagen).minusDays(1).format(DATE_FORMATTER);
         return String.format("%s\nGeldig van: %s tot en met: %s",super.toString(),
                 geldigVanaf, geldigTot);
     }
