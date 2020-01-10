@@ -6,6 +6,8 @@ import java.time.LocalTime;
 import java.time.Period;
 import java.time.chrono.ChronoLocalDateTime;
 
+import static java.util.concurrent.TimeUnit.DAYS;
+
 public class Meerdagenpas extends Skipas {
 
     private int aantalDagen;
@@ -24,9 +26,9 @@ public class Meerdagenpas extends Skipas {
     public boolean isGeldig(LocalDateTime datumGegeven) {
         LocalDateTime geldigVanaf = LocalDateTime.of(LocalDate.from(datum), LocalTime.MIN);
         LocalDateTime geldigTot = LocalDateTime.of(LocalDate.from(datum).plusDays(aantalDagen), LocalTime.MAX);
-        int dagenTussenGegevenEnGeldigTot = datum.until(geldigTot.toLocalDate()).getDays();
-        if (datumGegeven.toLocalDate().isEqual(geldigVanaf.toLocalDate()) ||
-                (datumGegeven.isAfter(geldigVanaf) && datumGegeven.isBefore(geldigTot)) && dagenTussenGegevenEnGeldigTot < 3) {
+        int dagenTussenGegevenEnGeldigTot = datumGegeven.toLocalDate().until(geldigTot.toLocalDate()).getDays();
+        if ((datumGegeven.toLocalDate().isEqual(geldigVanaf.toLocalDate()) && dagenTussenGegevenEnGeldigTot >= 1)||
+                (datumGegeven.isAfter(geldigVanaf) && datumGegeven.isBefore(geldigTot)) && dagenTussenGegevenEnGeldigTot >= 1) {
             return true;
         }
         return false;
